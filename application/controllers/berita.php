@@ -1,25 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class berita extends MY_Controller{
+class pasien extends CI_Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('Berita_model');
+        $this->load->model(['Pasien_model', 'Pendaftaran_model', 'Dokter_model']);
     }
     public function index(){
 
-        $data['berita']=$this->Berita_model->get_all_berita();
+        $data['pasien']=$this->Pasien_model->get_all_pasien();
         $this->load->view('templates/header');
-        $this->load->view('berita/index' ,$data);
+        $this->load->view('pasien/index' ,$data);
         $this->load->view('templates/footer');
     }
     public function tambah(){
         $this->load->model('Kategori_model');
         $data['kategori'] = $this->Kategori_model->get_all();
-        $data['berita']=$this->Berita_model->get_all_berita();
+        $data['pasien']=$this->Pasien_model->get_all_pasien();
         $this->load->view('templates/header');
-        $this->load->view('berita/form_berita',$data);
+        $this->load->view('pasien/form_berita',$data);
         $this->load->view('templates/footer');
     }
     public function insert(){
@@ -39,19 +39,19 @@ class berita extends MY_Controller{
             'tanggal_publish'=>$tgl_publish
         );
 
-        $result=$this->Berita_model->insert_berita($data);
+        $result=$this->Berita_model->insert_pasien($data);
 
         if($result){
-            $this->session->set_flashdata('success','Berita berhasil disimpan');
-            redirect('berita');
+            $this->session->set_flashdata('success','Data berhasil disimpan');
+            redirect('pasien');
         }else{
-            $this->session->set_flashdata('error','Berita gagal disimpan');
-            redirect('berita');
+            $this->session->set_flashdata('error','Data gagal disimpan');
+            redirect('pasien');
         }
     }
-    public function hapus($idberita){
-        $this->Berita_model->delete_berita($idberita);
-        redirect('berita');
+    public function hapus($idpasien){
+        $this->Pasien_model->delete_berita($idpasien);
+        redirect('pasien');
         }
     public function edit($idberita){
         $data['berita']=$this->Berita_model->get_berita_by_id($idberita);
