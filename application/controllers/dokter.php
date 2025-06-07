@@ -1,22 +1,22 @@
 <?php
 defined('BASEPATH')OR exit('No direct script access allowed');
 
-class dokter extends MY_Controller {
+class Dokter extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('dokter_model');
+        $this->load->model('Dokter_model');
        // $this->load->library('session');
     }
 
     public function index() {
-        $data['dokter_pasien'] = $this->dokter_model->get_all_dokter();
+        $data['dokter_pasien'] = $this->Dokter_model->get_all_dokter();
         $this->load->view('templates/header');
         $this->load->view('dokter/index', $data);
         $this->load->view('templates/footer');
     }
     public function tambah(){
-        $data['dokter_pasien']=$this->dokter_model->get_all_dokter();
+        $data['dokter_pasien']=$this->Dokter_model->get_all_dokter();
         $this->load->view('templates/header');
         $this->load->view('dokter/form_dokter', $data);
         $this->load->view('templates/footer');
@@ -26,7 +26,7 @@ class dokter extends MY_Controller {
         $data=array(      
             'dokter'=>$dokter          
         );
-        $result= $this->dokter_model->insert_dokter($data);
+        $result= $this->Dokter_model->insert_dokter($data);
 
         if($result){
             $this->session->set_flashdata('success', 'pasien berhasil disimpan');
@@ -37,11 +37,11 @@ class dokter extends MY_Controller {
         }
     }
     public function hapus($iddokter){
-        $this->dokter_model->delete_dokter($iddokter);
+        $this->Dokter_model->delete_dokter($iddokter);
         redirect('dokter');
     }
     public function edit($iddokter){
-        $data['dokter_pasien']=$this->dokter_model->get_dokter_by_id($iddokter);
+        $data['dokter_pasien']=$this->Dokter_model->get_dokter_by_id($iddokter);
         $this->load->view('templates/header');
         $this->load->view('dokter/edit_dokter',$data);
         $this->load->view('templates/footer');
@@ -59,7 +59,7 @@ class dokter extends MY_Controller {
                 'dokter' => $this->input->post('dokter')
                 
             ];
-            $this->dokter_model->update_dokter($id, $data);
+            $this->Dokter_model->update_dokter($id, $data);
             redirect('dokter');
         }
     }

@@ -1,66 +1,24 @@
 <?php
 defined('BASEPATH')OR exit('No direct script access allowed');
 
-class dokter_moodel extends MY_Controller {
-
-    public function __construct() {
-        parent::__construct();
-        $this->load->model('dokter_model');
-       // $this->load->library('session');
+class Dokter_model extends CI_Model{
+    public function get_all_dokter() {
+        return $this->db->get('dokter_pasien')->result_array();
     }
-
-    public function index() {
-        $data['dokter_pasien'] = $this->dokter_model->get_all_dokter();
-        $this->load->view('templates/header');
-        $this->load->view('dokter/index', $data);
-        $this->load->view('templates/footer');
+    public function get_all() {
+        return $this->db->get('dokter_pasien')->result();
     }
-    public function tambah(){
-        $data['dokter_pasien']=$this->dokter_model->get_all_dokter();
-        $this->load->view('templates/header');
-        $this->load->view('dokter/form_dokter', $data);
-        $this->load->view('templates/footer');
+    public function insert_dokter($data){
+        return $this->db->insert('dokter_pasien',$data);
     }
-    public function insert(){
-        $dokter= $this->input->post('dokter');
-        $data=array(      
-            'dokter'=>$dokter          
-        );
-        $result= $this->dokter_model->insert_dokter($data);
-
-        if($result){
-            $this->session->set_flashdata('success', 'pasien berhasil disimpan');
-            redirect('dokter');
-        }else{
-            $this->session->set_flashdata('error', 'gagal menyimpan pasien');
-            redirect('dokter');
-        }
+    public function delete_dokter($iddokter){
+        return $this->db->delete('dokter_pasien',['iddokter'=>$iddokter]);
     }
-    public function hapus($iddokter){
-        $this->dokter_model->delete_dokter($iddokter);
-        redirect('dokter');
+    public function get_dokter_by_id($iddokter){
+        return $this->db->get_where('dokter_pasien',['iddokter'=>$iddokter])->row_array();
     }
-    public function edit($iddokter){
-        $data['dokter_pasien']=$this->dokter_model->get_dokter_by_id($iddokter);
-        $this->load->view('templates/header');
-        $this->load->view('dokter/edit_dokter',$data);
-        $this->load->view('templates/footer');
-    }
-    public function update($id) {
-        
-        $this->form_validation->set_rules('dokter', 'dokter', 'required');
-       
-
-        if ($this->form_validation->run() === FALSE) {
-            $this->index($id);
-        } else {
-            $data = [
-                
-                'dokter' => $this->input->post('dokter')
-                
-            ];
-            $this->dokter_model->update_dokter($id, $data);
-            redirect('dokter');
-        }
+    public function update_dokter($id, $data) {
+        $this->db->where('iddokter', $id);
+        return $this->db->update('dokter_pasien', $data);
     }
 }

@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class pasien extends MY_Controller {
+class Pasien extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
         // Load model dan helper yang diperlukan
-        $this->load->model('pasien_model', 'pasien_model');
-        $this->load->model('kategori_model');
-        $this->load->model('dokter_model');
+        $this->load->model('Pasien_model', 'pasien_model');
+        $this->load->model('Kategori_model');
+        $this->load->model('Dokter_model');
         $this->load->library('form_validation');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -47,8 +47,8 @@ class pasien extends MY_Controller {
     }
 
     public function tambah() {
-        $data['kategori_pasien'] = $this->kategori_model->get_all();
-        $data['dokter_pasien'] = $this->dokter_model->get_all();
+        $data['kategori_pasien'] = $this->Kategori_model->get_all();
+        $data['dokter_pasien'] = $this->Dokter_model->get_all();
         $this->load->view('templates/header');
         $this->load->view('pasien/form_pasien', $data);
         $this->load->view('templates/footer');
@@ -65,8 +65,8 @@ class pasien extends MY_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             // Jika validasi gagal, tampilkan form tambah lagi dengan pesan error
-            $data['kategori_pasien'] = $this->kategori_model->get_all();
-            $data['dokter_pasien'] = $this->dokter_model->get_all();
+            $data['kategori_pasien'] = $this->Kategori_model->get_all();
+            $data['dokter_pasien'] = $this->Dokter_model->get_all();
             $this->load->view('templates/header');
             $this->load->view('pasien/form_pasien', $data);
             $this->load->view('templates/footer');

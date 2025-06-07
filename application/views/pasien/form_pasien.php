@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir" placeholder="yyyy-mm-dd" required>
+                        <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" placeholder="yyyy-mm-dd" required>
                     </div>
 
                     <div class="form-group">

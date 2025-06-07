@@ -42,15 +42,10 @@
         <!-- Form -->
         <form action="<?= base_url('dokter/insert'); ?>" method="POST">
           <div class="form-group">
-        <label for="dokter">Dokter Spesialis</label>
-          <select class="form-control" name="dokter" id="dokter" required>
-            <option value="">-- Pilih dokter --</option>
-            <option value="klinis">Klinis</option>
-            <option value="kebidanan">Kebidanan</option>
-            <option value="diagnostik">Diagnostik</option>
-            <option value="rehabilitas">Rehabilitas</option>
-            <option value="jiwa & mental">Jiwa & Mental</option>
-          </select>
+          <div class="form-group">
+                        <label for="dokter">Dokter</label>
+                        <input type="text" class="form-control" name="dokter" id="dokter" placeholder="Dokter Spesialis" required>
+                    </div>
           </div>
 
           <button type="submit" class="btn btn-primary">Simpan</button>

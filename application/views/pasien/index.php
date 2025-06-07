@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+ b<div class="content-wrapper">
   <!-- Content Header -->
   <section class="content-header">
     <div class="container-fluid">
@@ -24,7 +24,7 @@
         </h3>
         <div class="card-tools">
           <?php if ($this->session->userdata('role') == 'admin'): ?>
-            <button id="btnPrint" class="btn btn-success btn-sm mr-2">Print</button>
+            <button id="btnPrint" cla\ss="btn btn-success btn-sm mr-2">Print</button>
           <?php endif; ?>
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
           <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>

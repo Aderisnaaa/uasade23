@@ -12,9 +12,9 @@ class home_berita extends CI_Controller {
     public function index()
     {
         $data['berita'] = $this->HomeBerita_model->get_all();
-        $this->load->view('layout/header'); //bagian header AdmilLTE
-        $this->load->view('home/index' , $data); // konten berita
-        $this->load->view('layout/footer'); // bagian footer Admin LTE
+        $this->load->view('layouts/header'); // bagian header AdminLTE
+        $this->load->view('home/index', $data); // konten berita
+        $this->load->view('layouts/footer'); // bagian footer AdminLTE
     }
     public function detail($id)
 {
@@ -22,11 +22,11 @@ class home_berita extends CI_Controller {
     $data['berita'] = $this->HomeBerita_model->get_by_id($id);
 
     if (!$data['berita']) {
-        show_404(); // jika id tidak ditemukan
+        show_404(); // jika ID tidak ditemukan
     }
 
-    $this->load->view('layout/header');
+    $this->load->view('layouts/header');
     $this->load->view('home/detail', $data);
-    $this->load->view('layout/footer');
+    $this->load->view('layouts/footer');
 }
 }
