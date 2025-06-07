@@ -1,75 +1,73 @@
-<div class="content-wrapper">
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Form Register</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Register</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <section class="content">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Form Pendaftaran</h2>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/fontawesome-free/css/all.min.css'); ?>">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css'); ?>">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?= base_url('assets/adminlte/dist/css/adminlte.min.css'); ?>">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Halaman Register</p>
 
-                <?php if ($this->session->flashdata('success')): ?>
-                    <p style="color:green;"><?= $this->session->flashdata('success'); ?></p>
-                <?php endif; ?>
+      <form action="<?= base_url('auth/process_register'); ?>" method="POST">
+  <!-- username -->
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
+    <div class="input-group-append">
+      <div class="input-group-text"><span class="fas fa-user"></span></div>
+    </div>
+  </div>
 
-                <?php if ($this->session->flashdata('error')): ?>
-                    <p style="color:red;"><?= $this->session->flashdata('error'); ?></p>
-                <?php endif; ?>
+  <!-- password -->
+  <div class="input-group mb-3">
+    <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
+    <div class="input-group-append">
+      <div class="input-group-text"><span class="fas fa-lock"></span></div>
+    </div>
+  </div>
 
-                <?= validation_errors('<p style="color:red;">', '</p>'); ?>
+  <!-- konfirmasi password -->
+  <div class="input-group mb-3">
+    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Konfirmasi Password" required>
+    <div class="input-group-append">
+      <div class="input-group-text"><span class="fas fa-lock"></span></div>
+    </div>
+  </div>
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <form action="<?= base_url('auth/process_register'); ?>" method="POST">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Konfirmasi Password</label>
-                        <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Konfirmasi Password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="role">Role</label>
-                        <select class="form-control" name="role" required>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="card-footer">
-                <!-- Bisa ditambahkan informasi tambahan di sini -->
-            </div>
-        </div>
-    </section>
+  <div class="row">
+    <div class="col-4">
+      <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </div>
+  </div>
+</form>
+      <a href="<?= base_url('auth/login'); ?>" class="text-center">Punya akun? Klik login</a>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
 </div>
+<!-- /.register-box -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+</body>
+</html>
