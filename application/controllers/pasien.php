@@ -126,7 +126,7 @@ class Pasien extends MY_Controller {
             show_404();
         }
 
-        if ($role != 'admin' && $pasien['user_id'] != $user_id) {
+        if ($role != 'admin' && $role['user'] != $user_id) {
             show_error('Anda tidak berhak mengakses data ini', 403);
         }
 
