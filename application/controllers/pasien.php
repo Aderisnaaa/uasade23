@@ -12,8 +12,6 @@ class Pasien extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->helper('url');
         $this->load->helper('form');
-        
-        // Cek login, jika tidak ada user_id di session, redirect login
         if (!$this->session->userdata('user_id')) {
             redirect('login'); // sesuaikan route login kamu
         }
@@ -126,7 +124,7 @@ class Pasien extends MY_Controller {
             show_404();
         }
 
-        if ($role != 'admin' && $role['user'] != $user_id) {
+        if ($role != 'admin' && $pasien['user_id'] != $user_id) {
             show_error('Anda tidak berhak mengakses data ini', 403);
         }
 

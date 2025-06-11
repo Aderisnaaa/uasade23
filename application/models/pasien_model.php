@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pasien_model extends CI_Model {
 
     public function get_all_pasien($user_id = null, $role = null, $limit = null, $offset = null) {
+        if ($role !== 'admin' && $user_id !== null) {
+            $this->db->where('user_id', $user_id);
+        }
         if ($limit !== null) {
             $this->db->limit($limit, $offset);
         }
