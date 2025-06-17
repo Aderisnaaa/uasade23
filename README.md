@@ -1,3 +1,5 @@
-# uasade23
-user: user
-admin: admin
+#Aderisna SIM
+Nama: User
+Password: user
+Nama: admin
+Password: Admin
